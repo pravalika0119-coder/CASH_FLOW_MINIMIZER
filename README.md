@@ -85,10 +85,10 @@ frontend/index.html
 
 The project uses C structures to represent and manage:
 
--User information
--Income details
--Expense details
--Expense categories
+- User information
+- Income details
+- Expense details
+- Expense categories
 
 A **linked list** is used to dynamically store and manage expense records.
 
