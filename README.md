@@ -108,7 +108,7 @@ Savings        : ₹27,000
 The calculated cash flow is analyzed to provide appropriate expense management suggestions.
 
 ## Project Screenshots
-  -Homepage
+  - Homepage
   -Expense Management
   -Cash Flow Analysis
 
