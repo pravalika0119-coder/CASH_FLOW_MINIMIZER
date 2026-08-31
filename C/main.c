@@ -138,7 +138,7 @@ int main() {
 
     } while (choice != 4);
 
-    /* Free dynamically allocated memory */
+    
     Expense* current = person.expenses;
     while (current != NULL) {
         Expense* next = current->next;
