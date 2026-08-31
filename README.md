@@ -59,7 +59,7 @@ CASH_FLOW_MINIMIZER/
 │
 └── README.md
 
-⚙️ How to Run
+## ⚙️ How to Run
 C Program
 Open the C folder.
 Open main.c using a C compiler or IDE.
