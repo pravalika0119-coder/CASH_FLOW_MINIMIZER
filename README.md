@@ -123,25 +123,25 @@ The report provides detailed information about the project, including its design
 
 This project demonstrates practical knowledge of:
 
-C programming
-Data structures
-Structures and linked lists
-Dynamic memory management
-Modular programming
-Expense management
-Cash flow analysis
-Basic frontend development
-Problem-solving and logical thinking
-GitHub project management
+-C programming
+-Data structures
+-Structures and linked lists
+-Dynamic memory management
+-Modular programming
+-Expense management
+-Cash flow analysis
+-Basic frontend development
+-Problem-solving and logical thinking
+-GitHub project management
 
 ## 🚀 Future Enhancements
-Add expense deletion functionality
-Add graphical expense analysis
-Add monthly and yearly expense tracking
-Add budget limit notifications
-Add persistent data storage
-Improve the frontend interface
-Add interactive charts and reports
+-Add expense deletion functionality
+-Add graphical expense analysis
+-Add monthly and yearly expense tracking
+-Add budget limit notifications
+-Add persistent data storage
+-Improve the frontend interface
+-Add interactive charts and reports
 
 ## 👩‍💻 Author
 
