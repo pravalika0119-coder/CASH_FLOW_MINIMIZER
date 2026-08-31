@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Minimizer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .expense-list, .analysis {
+            margin-top: 20px;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .expense-item button {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 5px;
+            font-size: 15px;
+            width: 150px;
+        }
+
+        .expense-item button:hover {
+            background-color: #0056b3;
+        }
+
+        .strategies {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            background: #e9f7ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cash Flow Minimizer</h1>
+
+        <div id="income-section">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="income">Monthly Income:</label>
+            <input type="number" id="income" placeholder="Enter your monthly income">
+
+            <button onclick="setIncome()">Submit Income</button>
+        </div>
+
+        <div id="expense-section" style="display: none;">
+            <h2>Add Expenses</h2>
+
+            <label for="category">Expense Category:</label>
+            <input type="text" id="category" placeholder="e.g., Rent, Groceries etc...">
+
+            <label for="amount">Expense Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+
+            <button onclick="addExpense()">Add Expense</button>
+
+            <div class="expense-list" id="expense-list">
+                <h3>Expense List:</h3>
+            </div>
+
+            <button onclick="calculateAnalysis()">View Cash Flow Analysis</button>
+
+            <div class="analysis" id="analysis" style="display: none;">
+                <h3>Cash Flow Analysis</h3>
+                <div id="results"></div>
+                <div class="strategies" id="strategies"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let userName = '';
+        let userIncome = 0;
+        let expenses = [];
+
+        function setIncome() {
+            userName = document.getElementById('name').value.trim();
+            userIncome = parseFloat(document.getElementById('income').value);
+
+            if (!userName || isNaN(userIncome) || userIncome <= 0) {
+                alert('Please enter a valid name and monthly income.');
+                return;
+            }
+
+            document.getElementById('income-section').style.display = 'none';
+            document.getElementById('expense-section').style.display = 'block';
+
+            alert(`Welcome, ${userName}! Start adding your expenses.`);
+        }
+
+        function addExpense() {
+            const category = document.getElementById('category').value.trim();
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            if (!category || isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid expense category and amount.');
+                return;
+            }
+
+            const expense = { category, amount };
+            expenses.push(expense);
+
+            renderExpenses();
+
+            document.getElementById('category').value = '';
+            document.getElementById('amount').value = '';
+        }
+
+        function renderExpenses() {
+            const expenseList = document.getElementById('expense-list');
+
+            expenseList.innerHTML = '<h3>Expense List:</h3>';
+
+            expenses.forEach((expense, i) => {
+                const expenseItem = document.createElement('div');
+                expenseItem.className = 'expense-item';
+
+                expenseItem.innerHTML = `
+                    <span>${escapeHtml(expense.category)}: ₹${expense.amount.toFixed(2)}</span>
+                    <button onclick="editExpense(${i})">Edit</button>
+                `;
+
+                expenseList.appendChild(expenseItem);
+            });
+        }
+
+        function editExpense(index) {
+            const expense = expenses[index];
+
+            const newCategory = prompt('Edit Category:', expense.category);
+            if (newCategory === null) return;
+
+            const newAmount = parseFloat(prompt('Edit Amount:', expense.amount));
+
+            if (!newCategory.trim() || isNaN(newAmount) || newAmount <= 0) {
+                alert('Please enter valid details.');
+                return;
+            }
+
+            expenses[index] = {
+                category: newCategory.trim(),
+                amount: newAmount
+            };
+
+            renderExpenses();
+        }
+
+        function calculateAnalysis() {
+            const totalExpenses = expenses.reduce(
+                (sum, expense) => sum + expense.amount, 0
+            );
+
+            const savings = userIncome - totalExpenses;
+
+            const resultsDiv = document.getElementById('results');
+
+            resultsDiv.innerHTML = `
+                <p><strong>Total Income:</strong> ₹${userIncome.toFixed(2)}</p>
+                <p><strong>Total Expenses:</strong> ₹${totalExpenses.toFixed(2)}</p>
+                <p><strong>Savings:</strong> ₹${savings.toFixed(2)}</p>
+            `;
+
+            const strategiesDiv = document.getElementById('strategies');
+
+            if (savings < 0) {
+                strategiesDiv.innerHTML =
+                    `<p>- You're spending more than your income. Consider cutting discretionary expenses.</p>`;
+            } else if (savings < 0.2 * userIncome) {
+                strategiesDiv.innerHTML = `
+                    <p>- Your savings are below 20% of your income. Limit unnecessary expenses.</p>
+                    <p>- Focus on reducing expenses in categories like Entertainment/Dining out.</p>
+                `;
+            } else {
+                strategiesDiv.innerHTML =
+                    `<p>- Your savings are in a healthy range. Continue monitoring and optimizing expenses.</p>`;
+            }
+
+            document.getElementById('analysis').style.display = 'block';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
