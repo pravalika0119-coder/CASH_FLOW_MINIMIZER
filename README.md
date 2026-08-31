@@ -145,7 +145,7 @@ This project demonstrates practical knowledge of:
 
 ## 👩‍💻 Author
 
-**Pravalika M.**/n
+**Pravalika M/n**
 **Darshan Gowda S**
 **Sahana B R**
 
