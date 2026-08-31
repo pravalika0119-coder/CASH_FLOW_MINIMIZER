@@ -58,5 +58,95 @@ CASH_FLOW_MINIMIZER/
 │   └── Cash-Flow-Minimizer-Report.pdf
 │
 └── README.md
+```
 
+## ⚙️ How to Run
 
+### C Program
+1. Open the C folder.
+2. Open main.c using a C compiler or IDE.
+3. Compile the program.
+4. Run the generated executable.
+5. Follow the instructions displayed in the terminal.
+
+For GCC:
+```bash
+gcc main.c -o cash_flow_minimizer
+./cash_flow_minimizer
+```
+
+### Frontend
+Open the following file in a web browser:
+```text
+frontend/index.html
+```
+
+## 📊 Data Structures Used
+
+The project uses C structures to represent and manage:
+
+-User information
+-Income details
+-Expense details
+-Expense categories
+
+A **linked list** is used to dynamically store and manage expense records.
+
+## 🧮 Cash Flow Calculation
+
+The available savings are calculated using:
+
+**Savings = Total Income − Total Expenses**
+
+Example
+```
+Total Income   : ₹50,000
+Total Expenses : ₹23,000
+Savings        : ₹27,000
+```
+
+The calculated cash flow is analyzed to provide appropriate expense management suggestions.
+
+## Project Screenshots
+  -Homepage
+  -Expense Management
+  -Cash Flow Analysis
+
+## 📄 Project Report
+The complete project report is available in the ```report``` folder.
+
+**Report:** ```Cash-Flow-Minimizer-Report.pdf``` 
+
+The report provides detailed information about the project, including its design, implementation, methodology, and results.
+
+## 🎓 Project Highlights
+
+This project demonstrates practical knowledge of:
+
+C programming
+Data structures
+Structures and linked lists
+Dynamic memory management
+Modular programming
+Expense management
+Cash flow analysis
+Basic frontend development
+Problem-solving and logical thinking
+GitHub project management
+
+## 🚀 Future Enhancements
+Add expense deletion functionality
+Add graphical expense analysis
+Add monthly and yearly expense tracking
+Add budget limit notifications
+Add persistent data storage
+Improve the frontend interface
+Add interactive charts and reports
+
+## 👩‍💻 Author
+
+**Pravalika M.**
+
+B.E. – Electrical & Electronics Engineering
+
+BNM Institute of Technology, Bengaluru
