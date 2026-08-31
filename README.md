@@ -146,6 +146,8 @@ This project demonstrates practical knowledge of:
 ## 👩‍💻 Author
 
 **Pravalika M.**
+**Darshan Gowda S**
+**Sahana B R**
 
 B.E. – Electrical & Electronics Engineering
 
